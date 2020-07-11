@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü7.1</title>
+</head>
+<body>
+<script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit-element/lit-element.js?module';
+
+    class MdCounter extends LitElement {
+        static get properties() {
+            return {
+                limit:  { type: Number, attribute: true },
+                current: { type: Number, attribute: true },
+                warning: { type: Boolean}
+            };
+        }
+
+        constructor() {
+            super();
+            this.warning = false;
+        }
+
+        static get styles() {
+            return css`
+            button.warning{
+                background-color: red;
+            }
+        `;
+        }
+
+        disableWarning(t){
+            t.warning = false;
+            t.requestUpdate();
+        }
+
+        updateCurrent(e) {
+            if(this.current !== this.limit) this.current++;
+            if(this.current === this.limit) {
+                this.warning = true;
+                setTimeout(this.disableWarning, 200, this);
+            }
+        }
+
+        render() {
+            return html`
+        <button
+        type="button"
+        class="${this.warning ? "warning": ""}"
+        @click="${this.updateCurrent}"
+        >${this.current}</button>
+      `;
+        }
+    }
+
+    customElements.define('md-counter', MdCounter);
+</script>
+<md-counter current="3" limit="10"></md-counter>
+</body>
+</html>

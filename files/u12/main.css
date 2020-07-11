@@ -1,0 +1,36 @@
+body { background-color: white}
+nav ul li {
+    display: inline;
+    background-color: #efefef;
+    color: mediumblue;
+}
+
+nav ul li a {
+    margin: 4px;
+}
+nav { text-align: center; }
+#main { display: flex; }
+site_nav { flex: 1; }
+.container {
+    flex: 0 0 70%;
+    background-color: #efefef;
+}
+
+.add-content {
+
+}
+.active { font-weight: bold; }
+footer a {
+    display: inline;
+    background-color: #efefef;
+    color: black;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+footer { text-align: center; }
+
+.info-footer{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}

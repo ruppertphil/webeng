@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü7.2</title>
+</head>
+<body>
+<script type="module">
+    import { LitElement, html} from 'https://unpkg.com/lit-element/lit-element.js?module';
+
+    class MdCounter extends LitElement {
+        static get properties() {
+            return {
+                current: { type: Number, attribute: true },
+                timer: { type: Number, attribute: false }
+            };
+        }
+
+        constructor() {
+            super();
+            this.current = 0;
+            this.timer = -1;
+        }
+
+        startTimer(){
+            if(this.timer !== -1){
+                clearInterval(this.timer);
+                this.timer = -1;
+            }
+            this.current = 0;
+            this.timer = setInterval(this.updateTimer, 1000, this);
+        }
+
+        pauseTimer(){
+            if(this.timer !== -1){
+                clearInterval(this.timer);
+                this.timer = -1;
+            }
+        }
+
+        continueTimer(){
+            if(this.timer === -1){
+                this.timer = setInterval(this.updateTimer, 1000, this);
+            }
+        }
+
+        updateTimer(e) {
+            e.current++;
+            e.requestUpdate();
+        }
+
+        render() {
+            return html`
+        <button
+        type="button"
+        @click="${this.startTimer}"
+        >Start</button>
+        <button
+        type="button"
+        @click="${this.pauseTimer}"
+        >Stop</button>
+        <button
+        type="button"
+        @click="${this.continueTimer}"
+        >Weiter</button>
+        <h3>${(this.current + "").toHHMMSS()}</h3>
+      `;
+        }
+    }
+
+    customElements.define('md-counter', MdCounter);
+
+    String.prototype.toHHMMSS = function () {
+        var sec_num = parseInt(this, 10);
+        var hours   = Math.floor(sec_num / 3600);
+        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+        var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+        if (hours   < 10) {hours   = "0"+hours;}
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        return hours+':'+minutes+':'+seconds;
+    };
+</script>
+<md-counter></md-counter>
+</body>
+</html>

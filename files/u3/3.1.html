@@ -1,0 +1,91 @@
+<html lang="de">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Ü3.1</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .r{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+
+        .c{
+            --width: 1;
+            flex-basis: calc(var(--width) / 12 * 100% - 10px);
+            margin: 5px;
+            padding: 8px;
+        }
+
+        .top{
+            --width: 12;
+            background-color: red;
+        }
+
+        .left{
+            --width: 3;
+            background-color: greenyellow;
+        }
+
+        .center{
+            --width: 6;
+            background-color: blue;
+            color: white;
+        }
+
+        .right{
+            --width: 3;
+            background-color: deeppink;
+        }
+
+        @media (max-width: 600px) {
+            .left{
+                --width: 4;
+            }
+            .center{
+                --width: 8;
+            }
+            .right{
+                --width: 12;
+            }
+        }
+        @media (max-width: 360px) {
+            .left{
+                --width: 12;
+            }
+            .center{
+                --width: 12;
+            }
+            .right{
+                --width: 12;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="r">
+            <div class="c top">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+        </div>
+        <div class="r">
+            <div class="c left">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+            <div class="c center">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+            <div class="c right">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

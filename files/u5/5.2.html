@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü5.2</title>
+</head>
+<body>
+    <h1>Rednerliste</h1>
+    <div>
+        Neuer Redner:
+        <input type="text" id="newitem_input">
+        <input id="newitem_submit" type="submit" value="Hinzufügen">
+    </div>
+    <ul id="list">
+
+    </ul>
+
+    <script>
+        let input = document.getElementById("newitem_input");
+        let submit = document.getElementById("newitem_submit");
+        let list = document.getElementById("list");
+        let i = 0;
+        let current = null;
+        let redner = [];
+        let timer = null;
+
+        String.prototype.toHHMMSS = function () {
+            var sec_num = parseInt(this, 10);
+            var hours   = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+            var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+            if (hours   < 10) {hours   = "0"+hours;}
+            if (minutes < 10) {minutes = "0"+minutes;}
+            if (seconds < 10) {seconds = "0"+seconds;}
+            return hours+':'+minutes+':'+seconds;
+        };
+
+        function toggle(){
+            if(this.parentElement.id === current){
+                stop_timer();
+            }
+            else{
+                if(current !== null){
+                    stop_timer();
+                }
+                current = this.parentElement.id;
+                start_timer();
+            }
+        }
+
+        function stop_timer(){
+            document.getElementById("b" + current).value = "Start!";
+            current = null;
+            clearInterval(timer);
+        }
+
+        function start_timer(){
+            document.getElementById("b" + current).value = "Stopp!";
+            timer = setInterval(sec_timer, 1000);
+        }
+
+        function sec_timer(){
+            redner[current].time++;
+            document.getElementById("t" + current).innerText = redner[current].name + " " + (redner[current].time + "").toHHMMSS() + " ";
+        }
+
+        submit.addEventListener("click", function(){
+            let nl = document.createElement("li");
+            let btn = document.createElement("input");
+            let nt = document.createElement("span");
+            nt.id = "t" + i;
+            nt.innerText = input.value + " 00:00:00 ";
+            btn.type = "submit";
+            btn.onclick = toggle;
+            btn.value = "Stopp!";
+            btn.id = "b" + i;
+            nl.id = i;
+            nl.appendChild(nt);
+            nl.appendChild(btn);
+            list.appendChild(nl);
+            redner.push({name: input.value, time: 0});
+
+            if(current !== null) stop_timer();
+            current = i;
+            start_timer();
+            i++;
+        });
+    </script>
+</body>
+</html>

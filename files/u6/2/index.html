@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü6.2</title>
+</head>
+<body>
+    <div id="text"></div>
+<script>
+    let A = null;
+    let B = null;
+    function setContent(data){
+        let text = document.getElementById("text");
+        let linesA = A.split("\n");
+        let linesB = B.split("\n");
+        for (let i = 0; i < linesA.length; i++){
+            text.append(linesA[i] + linesB[i]);
+        }
+    }
+    async function getA(){
+        let req = await fetch("A.txt");
+        A = await req.text();
+    }
+    async function getB(){
+        let req = await fetch("B.txt");
+        B = await req.text();
+    }
+    Promise.all([
+        getA(),
+        getB()
+    ]).then(data => setContent(data));
+</script>
+</body>
+</html>

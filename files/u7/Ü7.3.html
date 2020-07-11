@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü7.3</title>
+</head>
+<body>
+<script type="module">
+    import { LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
+
+    class MdNavigation extends LitElement {
+        static get properties() {
+            return {
+                horizontal: { type: Boolean, attribute: true },
+                links: { type: Array}
+            };
+        }
+
+        static get styles() {
+            return css`
+                .md-navigation-ul{
+                    list-style-type: none;
+                }
+                .md-navigation-ul[horizontal]{
+                    display: inline-flex;
+                }
+            `;
+        }
+
+        constructor() {
+            super();
+            this.horizontal = false;
+            this.links = [];
+            this.links.push({url: "#test1", name: "Test 1"});
+            this.links.push({url: "#test2", name: "Test 2"});
+            this.links.push({url: "#test3", name: "Test 3"});
+            this.links.push({url: "#test4", name: "Test 4"});
+            //Testdaten
+        }
+
+        render() {
+            return html`
+            <ul class="md-navigation-ul" ?horizontal="${this.horizontal}">
+            ${this.links.map((i) => html`<li><a href="${i.url}">${i.name}</a></li>`)}
+            </ul>
+      `;
+        }
+    }
+
+    customElements.define('md-navigation', MdNavigation);
+</script>
+<md-navigation horizontal></md-navigation>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.2</title>
+</head>
+<body>
+<div id="menuapp">
+    <menuv>
+    </menuv>
+    <menuv>
+    </menuv>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+    Vue.component('menuv', {
+        template: '<div><ul class="nav" v-for="menu in menus"><li><a :href="menu[1]">{{menu[0]}}</a></li></ul></div>',
+        data: function(){
+            return {
+                menus: [['Home', "/home"], ["Infos", "/infos"]]
+            }
+        }
+    });
+    new Vue({
+        el: '#menuapp'
+    });
+</script>
+</body>
+</html>

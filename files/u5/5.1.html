@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü5.1</title>
+</head>
+<body>
+    <h1>Einkaufsliste</h1>
+    <div>
+        Enter a new item:
+        <input type="text" id="newitem_input">
+        <input id="newitem_submit" type="submit" value="Add item">
+    </div>
+    <ul id="list">
+
+    </ul>
+
+    <script>
+        let input = document.getElementById("newitem_input");
+        let submit = document.getElementById("newitem_submit");
+        let list = document.getElementById("list");
+
+        function remove(){
+            this.parentElement.remove();
+        }
+
+        submit.addEventListener("click", function(){
+            let nl = document.createElement("li");
+            nl.appendChild(document.createTextNode(input.value + " "));
+            let btn = document.createElement("input");
+            btn.type = "submit";
+            btn.onclick = remove;
+            btn.value = "Delete";
+            nl.appendChild(btn);
+            list.appendChild(nl);
+        });
+    </script>
+</body>
+</html>

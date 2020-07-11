@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>WWW-Navigator</title>
+    <style>
+        nav ul li {
+            display: inline;
+            background-color: #efefef;
+            color: black;
+        }
+
+        nav ul li a {
+            margin: 4px;
+        }
+        nav { text-align: center; }
+        #main { display: flex; }
+        site_nav { flex: 1; }
+        #content {
+            flex: 0 0 70%;
+            background-color: #efefef;
+        }
+        .active { font-weight: bold; }
+        footer a {
+            display: inline;
+            background-color: #efefef;
+            color: black;
+        }
+        footer { text-align: center; }
+    </style>
+</head>
+<body>
+<nav>
+    <ul id="nav">
+    </ul>
+</nav>
+<div id="main">
+    <site_nav>
+        <ul id="site_nav">
+
+        </ul>
+    </site_nav>
+    <div id="content">text</div>
+</div>
+<footer id="footer">
+
+</footer>
+</body>
+</html>
+<script>
+    const data = [
+         {
+            "Html":"html blablal",
+            "Css":"css balksdasld",
+            "Javascript": "Javascript asjdasjkd",
+            "Other": " other askodaskldred"
+        },
+
+        {
+            "Promises":"promises askdmasmkdl",
+            "async":"async ahjsdajnk",
+            "fetch": "fetch a.sd-asd",
+            "callback": "callback aksdjiaskld "
+        },
+
+        {
+            "Sitemap":"sitemap asdjkmasd",
+            "Home":"home akosdkl",
+            "News": "news aksmldasmkld",
+            "Contact": "contact asdmkasdmkl",
+            "About": "about 123asdmkasdmkl"
+        }
+    ];
+
+    const p = document.getElementById('content');
+
+    function createNavs() {
+        for(var i = 0; i < data.length; i++) {
+            for(var e in data[i]){
+                if (data[i].hasOwnProperty(e)) {
+                    if(i==0){
+                        createMenuEntry(e, "nav");
+                    } else if (i==1){
+                        createMenuEntry(e, "site_nav");
+                    } else {
+                        createMenuEntry(e, "footer", true);
+                    }
+                }
+            }
+        }
+    }
+
+    function createMenuEntry(link, id, isFooter = false){
+        var nav = document.getElementById(id);
+        if(isFooter){
+            var a = document.createElement("a");
+            a.setAttribute("href",createLink(link));
+            a.setAttribute("onclick", "getContent(this)");
+            a.innerText = link;
+            nav.appendChild(a);
+        } else {
+            var li = document.createElement("li");
+            li.innerHTML = "<a href='" + createLink(link) + "' onclick='getContent(this)'>" + link + "</a>";
+            nav.appendChild(li);
+        }
+    }
+
+    function createLink(link){
+        return "#" + link.toLowerCase();
+    }
+
+    function getContent(ele){
+        for(var i = 0; i < data.length; i++) {
+            for (var e in data[i]) {
+                if(e == ele.innerHTML){
+                    setContent(data[i][e]);
+                    setHistory(e);
+                }
+            }
+        }
+    }
+
+    function setContent(text){
+        var content = document.getElementById("content");
+        content.innerHTML = text;
+    }
+
+    function setHistory(link){
+        history.pushState(
+            {info: "index.html " + link},
+            link,
+            'index.html'+createLink(link)
+        )
+    }
+
+    createNavs();
+
+</script>

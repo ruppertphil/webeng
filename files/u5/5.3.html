@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü5.3</title>
+    <style>
+        table{
+            width: 100%;
+        }
+        tr{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Performanzmessung</h1>
+    <div>
+        <table>
+            <tr>
+                <th>innerHTML</th>
+                <th>innerText</th>
+                <th>textContent</th>
+                <th>outerHTML</th>
+            </tr>
+            <tr>
+                <td id="data1"></td>
+                <td id="data2"></td>
+                <td id="data3"></td>
+                <td id="data4"></td>
+            </tr>
+        </table>
+    </div>
+    <h2>innerHTML</h2>
+    <p id="text1"></p>
+    <h2>innerText</h2>
+    <p id="text2"></p>
+    <h2>textContent</h2>
+    <p id="text3"></p>
+    <h2>outerHTML</h2>
+    <p id="text4"></p>
+    <script>
+        let txt = "<p><strong>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</strong> sed diam nonumy <span style=\"color: #008000;\">eirmod tempor</span> invidunt ut <span style=\"color: #008000;\">labore et dolore</span> magna aliquyam <span style=\"background-color: #99ccff;\">erat, sed diam voluptua</span>. <span style=\"color: #993366;\">At vero eos et accusam</span> et justo <span style=\"text-decoration: underline;\">duo dolores</span> et ea rebum. Stet clita kasd gubergren, no sea <sup>takimata sanctus</sup> est Lorem ipsum dolor sit amet. <span style=\"color: #008080;\">Lorem ipsum dolor sit amet</span>, <strong>consetetur sadipscing elitr</strong>, <span style=\"background-color: #99ccff;\">sed diam nonumy</span> eirmod tempor <span style=\"color: #008000;\">invidunt ut labore </span><span style=\"background-color: #99ccff;\"><span style=\"color: #008000;\">et dolore</span> magna</span> <span style=\"color: #008080;\">aliquyam erat</span>, sed <span style=\"text-decoration: underline;\">diam voluptua</span>. At vero <span style=\"background-color: #99ccff;\">eos et accusam</span> et justo duo dolores <span style=\"text-decoration: underline;\">et ea rebum</span>. Stet clita kasd gubergren, <span style=\"color: #993366;\">no sea takimata</span> sanctus est Lorem<span style=\"color: #33cccc;\"> ipsum dolor sit</span> amet. <span style=\"text-decoration: underline;\">Lorem ipsum dolor</span> sit amet, consetetur sadipscing elitr, sed diam nonumy <em>eirmod tempor invidunt</em> ut labore et dolore <span style=\"color: #33cccc;\">magna aliquyam</span> erat, <strong>sed diam</strong> voluptua. At <span style=\"background-color: #999999; color: #ffffff;\">vero eos et accusam et justo</span> duo <span style=\"background-color: #99ccff;\">dolores et ea rebum</span>. <span style=\"text-decoration: line-through;\">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span></p>\n" +
+            "<p>Duis <span style=\"background-color: #99ccff;\">autem vel eum</span> iriure dolor in <em>hendrerit in vulputate</em> velit esse <span style=\"text-decoration: underline;\">molestie consequat</span>, vel illum dolore eu feugiat nulla facilisis at vero <span style=\"background-color: #99ccff;\">eros et accumsan</span> et iusto <span style=\"color: #008000;\">odio dignissim qui blandit</span> praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet</p>\n" +
+            "<hr />";
+        function test(id){
+            let el = document.getElementById("text" + id);
+            let t_start = performance.now();
+            switch (id) {
+                case 1: {el.innerHTML = txt; break;}
+                case 2: {el.innerText = txt; break;}
+                case 3: {el.textContent = txt; break;}
+                case 4: {el.outerHTML = txt; break;}
+            }
+            let time = performance.now() - t_start;
+            document.getElementById("data" + id).innerText = time + " ms";
+        }
+
+        test(1);
+        test(2);
+        test(3);
+        test(4);
+    </script>
+</body>
+</html>

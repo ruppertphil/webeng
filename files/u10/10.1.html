@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.1</title>
+</head>
+<body>
+<div id="counterapp">
+    <counter>
+    </counter>
+    <counter>
+    </counter>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+    Vue.component('counter', {
+        template: '<div><h4>{{count}}</h4><button @click="increment">Increment ({{inc}} mal geklickt)</button><button @click="decrement">Decrement ({{dec}} mal geklickt)</button></div>',
+        data: function(){
+            return {
+                count: 0,
+                inc: 0,
+                dec: 0
+            }
+        },
+        methods: {
+            increment: function(){ this.count++; this.inc++; },
+            decrement: function(){ this.count--; this.dec++; }
+        }
+    });
+
+    new Vue({
+        el: '#counterapp'
+    });
+</script>
+</body>
+</html>

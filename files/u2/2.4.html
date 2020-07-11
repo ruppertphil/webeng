@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü2.4</title>
+    <style>
+        body{
+            background-color: #b2d6d1;
+            font-family: Arial;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .container{
+            background-color: white;
+            margin-left: 25px;
+            margin-right: 25px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .tbl-center{
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .tbl-center tr td:first-child{
+            text-align: right;
+            width: 50%;
+        }
+
+        .tbl-center tr td{
+            padding: 8px;
+        }
+
+        input[type=text],
+        input[type=number],
+        select{
+            height: 30px;
+            border-radius: 3px;
+            border: 1px solid #cfcfcf;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .td-top{
+            vertical-align: top;
+        }
+
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <div class="container">
+        <p>Let us know how we can improve freeCodeCamp</p>
+        <form>
+            <table class="tbl-center">
+                <tr>
+                    <td>
+                        <label for="name">* Name:</label>
+                    </td>
+                    <td>
+                        <input id="name" name="name" type="text" placeholder="Enter your name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mail">* Email:</label>
+                    </td>
+                    <td>
+                        <input id="mail" name="mail" type="text" placeholder="Enter your Email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="age">* Age:</label>
+                    </td>
+                    <td>
+                        <input id="age" name="age" type="number" placeholder="Age">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="role">Which option best describes your current role?</label>
+                    </td>
+                    <td>
+                        <select id="role" name="role">
+                            <option value="student">Student</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-top">
+                        How likely is that you would recommend freeCodeCamp to a friend?
+                    </td>
+                    <td>
+                        <input id="recommend1" name="recommend" type="radio" value="Definitely">
+                        <label for="recommend1">Definitely</label><br>
+                        <input id="recommend2" name="recommend" type="radio" value="Maybe">
+                        <label for="recommend2">Maybe</label><br>
+                        <input id="recommend3" name="recommend" type="radio" value="Not sure">
+                        <label for="recommend3">Not sure</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="like">What do you like most in FCC:</label>
+                    </td>
+                    <td>
+                        <select id="like" name="like">
+                            <option value="o1">Select an option</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-top">
+                        Things that should be improved in the future (Check all that apply):
+                    </td>
+                    <td>
+                        <input id="fut1" name="fut1" type="checkbox" value="Front-end">
+                        <label for="fut1">Front-end Projects</label><br>
+                        <input id="fut2" name="fut2" type="checkbox" value="Back-end">
+                        <label for="fut2">Back-end Projects</label><br>
+                        <input id="fut3" name="fut3" type="checkbox" value="DV">
+                        <label for="fut3">Data Visualization</label>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

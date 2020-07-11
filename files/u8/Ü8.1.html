@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ü8.1</title>
+    <style>
+        .hover-anim:hover {
+            transform: scale(2);
+        }
+        .hover-anim {
+            transition: all 1s;
+            transform-origin: 50% 50%;
+            margin-left: 75px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 0 150 160" width="150px" height="160px" class="hover-anim">
+        <rect x="0" y="0" width="150px" height="160px" fill="pink" />
+        <text x="15" y="35" font-family="Arial" font-size="30" fill="white">
+            Use
+        </text>
+        <text x="15" y="85" font-family="Arial" font-size="30" fill="white">
+            The
+        </text>
+        <text x="15" y="135" font-family="Arial" font-size="30" fill="white">
+            Platform
+        </text>
+        <line x1="15" y1="42" x2="135" y2="42" style="stroke:white;stroke-width:2"></line>
+        <line x1="15" y1="92" x2="135" y2="92" style="stroke:white;stroke-width:2"></line>
+        <line x1="15" y1="142" x2="135" y2="142" style="stroke:white;stroke-width:2"></line>
+    </svg>
+</body>
+</html>
