@@ -24,6 +24,7 @@
         let redner = [];
         let timer = null;
 
+        //https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
         String.prototype.toHHMMSS = function () {
             var sec_num = parseInt(this, 10);
             var hours   = Math.floor(sec_num / 3600);
@@ -35,7 +36,8 @@
             if (seconds < 10) {seconds = "0"+seconds;}
             return hours+':'+minutes+':'+seconds;
         };
-
+        //---
+        
         function toggle(){
             if(this.parentElement.id === current){
                 stop_timer();
